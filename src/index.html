@@ -8,43 +8,44 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <main>
-      <div class="container">
-        <div class="cards-field js-cards-field">
-          <form class="input-form js-input-form" autocomplete="off">
-            <input
-              type="text"
-              class="js-input"
-              name="word-en"
-              placeholder="Enter word in english"
-            />
-            <input
-              type="text"
-              class="js-input"
-              name="word-ua"
-              placeholder="Enter word in ukrainian"
-            />
-            <div class="buttons">
-              <button
-                type="submit"
-                class="btn js-translate-btn"
-                data-action="translate"
-              >
-                Translate
-              </button>
-              <button type="button" class="btn js-safe-btn" data-action="save">
-                Safe
-              </button>
-              <button
-                type="button"
-                class="btn js-reset-btn"
-                data-action="reset"
-              >
-                Reset
-              </button>
-            </div>
-          </form>
-        </div>
+    <main class="container main">
+      <div class="cards-field js-cards-field">
+        <form class="form js-input-form" autocomplete="off">
+          <div class="form-group">
+            <label class="form-label"
+              >English
+              <input
+                type="text"
+                class="form-input js-input"
+                name="word-en"
+                placeholder="Enter word in English"
+            /></label>
+            <label class="form-label"
+              >Ukrainian
+
+              <input
+                type="text"
+                class="form-input js-input"
+                name="word-ua"
+                placeholder="Enter word in Ukrainian"
+            /></label>
+          </div>
+          <div class="buttons">
+            <button
+              type="submit"
+              class="btn js-translate-btn"
+              data-action="translate"
+            >
+              Translate
+            </button>
+            <button type="button" class="btn js-safe-btn" data-action="save">
+              Safe
+            </button>
+            <button type="button" class="btn js-reset-btn" data-action="reset">
+              Reset
+            </button>
+          </div>
+        </form>
       </div>
     </main>
 
