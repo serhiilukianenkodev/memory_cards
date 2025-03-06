@@ -1,47 +1,23 @@
-import { nanoid } from 'nanoid';
-
+import { hideCards, showCards } from './js/cards/cards';
 import { refs } from './js/constants/refs';
-import { fetchTranslation } from './js/translateAPI/translateAPI';
-import { getWordsLS, saveWordsLS } from './js/localStorage/localStorage';
+import { hideForm, showForm } from './js/form/form';
+import { getWordsLS } from './js/localStorage/localStorage';
 
-const savedWords = getWordsLS() || [];
+export const savedWords = getWordsLS() || [];
 console.log('🚀 ~ savedWords:', savedWords);
 
-refs.btnTarnslate.addEventListener('click', onTranslateBtnClick);
-refs.btnSafe.addEventListener('click', onSafeBtnClick);
-refs.btnResert.addEventListener('click', () => refs.form.reset());
-refs.form.addEventListener('submit', onFormSubmit);
+refs.btnAddCards.addEventListener('click', onAddCardsBtnClick);
+refs.btnStartQuiz.addEventListener('click', onStartQuizBtnClick);
 
-function onFormSubmit(event) {
-  event.preventDefault();
-  const target = event.target;
-  console.log('🚀 ~ onFormSubmit ~ target:', target);
+function onStartQuizBtnClick() {
+  console.log('start quiz');
+  hideForm();
+  showCards();
 }
 
-async function onTranslateBtnClick() {
-  const textEN = refs.fieldWordEN.value;
-  const textUA = refs.fieldWordUA.value;
+function onAddCardsBtnClick() {
+  showForm();
+  hideCards();
 
-  if (textEN) {
-    const translation = await fetchTranslation(textEN);
-    refs.fieldWordUA.value = translation.toLowerCase();
-    return;
-  }
-
-  if (textUA) {
-    const translation = await fetchTranslation(textUA, 'uk|en');
-    refs.fieldWordEN.value = translation.toLowerCase();
-    return;
-  }
-}
-
-function onSafeBtnClick() {
-  savedWords.push({
-    id: nanoid(),
-    en: refs.fieldWordEN.value,
-    ua: refs.fieldWordUA.value,
-  });
-  refs.form.reset();
-  saveWordsLS(savedWords);
-  console.table(savedWords);
+  console.log('add cards');
 }
